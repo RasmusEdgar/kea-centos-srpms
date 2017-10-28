@@ -4,7 +4,7 @@
 #http://lists.fedoraproject.org/pipermail/devel/2011-August/155358.html
 %global _hardened_build 1
 
-%global prever beta
+#%%global prever beta
 
 #%%global VERSION %%{version}-%%{patchver}
 #%%global VERSION %%{version}-%%{prever}
@@ -13,10 +13,10 @@
 Summary:  DHCPv4, DHCPv6 and DDNS server from ISC
 Name:     kea
 Version:  1.3.0
-Release:  0.1.beta%{?dist}
+Release:  1%{?dist}
 License:  MPLv2.0 and Boost
 URL:      http://kea.isc.org
-Source0:  http://ftp.isc.org/isc/kea/%{VERSION}/kea-%{VERSION}-%{prever}.tar.gz
+Source0:  http://ftp.isc.org/isc/kea/%{VERSION}/kea-%{VERSION}.tar.gz
 
 # http://kea.isc.org/ticket/3529
 Patch0:   kea-systemd.patch
@@ -77,7 +77,7 @@ Requires: boost-devel
 Header files and API documentation.
 
 %prep
-%setup -q -n kea-%{VERSION}-%{prever}
+%setup -q -n kea-%{VERSION}
 
 %patch0 -p1 -b .systemd
 
@@ -171,8 +171,11 @@ EOF
 %{_unitdir}/kea-dhcp6.service
 %{_unitdir}/kea-dhcp-ddns.service
 %dir %{_sysconfdir}/kea/
-%config(noreplace) %{_sysconfdir}/kea/kea.conf
 %config(noreplace) %{_sysconfdir}/kea/keactrl.conf
+%config(noreplace) %{_sysconfdir}/kea/kea-dhcp4.conf
+%config(noreplace) %{_sysconfdir}/kea/kea-dhcp6.conf
+%config(noreplace) %{_sysconfdir}/kea/kea-dhcp-ddns.conf
+%config(noreplace) %{_sysconfdir}/kea/kea-ctrl-agent.conf
 %dir %{_datarootdir}/kea/
 %{_datarootdir}/kea/scripts
 %dir /run/kea/
@@ -196,7 +199,6 @@ EOF
 %{_mandir}/man8/kea-dhcp6.8.gz
 %{_mandir}/man8/kea-lfc.8.gz
 %{_mandir}/man8/kea-ctrl-agent.8.gz
-%{_mandir}/man8/kea-shell.8.gz
 %{_mandir}/man8/keactrl.8.gz
 %{_mandir}/man8/perfdhcp.8.gz
 
@@ -249,6 +251,9 @@ EOF
 %{_libdir}/pkgconfig/dns++.pc
 
 %changelog
+* Sat Oct 28 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-1
+- Adjusted spec for kea 1.3.0-1
+
 * Tue Oct 03 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-0.1.beta
 - Adjusted spec for kea 1.3.0-0.1.beta
 
