@@ -13,7 +13,7 @@
 Summary:  DHCPv4, DHCPv6 and DDNS server from ISC
 Name:     kea
 Version:  1.3.0
-Release:  1%{?dist}
+Release:  2%{?dist}
 License:  MPLv2.0 and Boost
 URL:      http://kea.isc.org
 Source0:  http://ftp.isc.org/isc/kea/%{VERSION}/kea-%{VERSION}.tar.gz
@@ -141,15 +141,15 @@ EOF
 
 
 %post
-%systemd_post kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service
+%systemd_post kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 
 
 %preun
-%systemd_preun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service
+%systemd_preun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 
 
 %postun
-%systemd_postun_with_restart kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service
+%systemd_postun_with_restart kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 
 
 %post libs -p /sbin/ldconfig
@@ -167,6 +167,7 @@ EOF
 %{_sbindir}/keactrl
 %{_sbindir}/perfdhcp
 %{_bindir}/kea-msg-compiler
+%{_unitdir}/kea-ctrl-agent.service
 %{_unitdir}/kea-dhcp4.service
 %{_unitdir}/kea-dhcp6.service
 %{_unitdir}/kea-dhcp-ddns.service
@@ -251,6 +252,9 @@ EOF
 %{_libdir}/pkgconfig/dns++.pc
 
 %changelog
+* Sat Oct 28 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-2
+- Add kea-ctrl-agent.service in kea-systemd.patch
+
 * Sat Oct 28 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-1
 - Adjusted spec for kea 1.3.0-1 and revised kea-systemd.patch for the keactrl Makefile.am
 
