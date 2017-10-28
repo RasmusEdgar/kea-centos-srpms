@@ -252,7 +252,7 @@ EOF
 
 %changelog
 * Sat Oct 28 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-1
-- Adjusted spec for kea 1.3.0-1
+- Adjusted spec for kea 1.3.0-1 and revised kea-systemd.patch for the keactrl Makefile.am
 
 * Tue Oct 03 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-0.1.beta
 - Adjusted spec for kea 1.3.0-0.1.beta
