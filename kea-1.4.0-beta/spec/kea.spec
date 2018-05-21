@@ -23,7 +23,7 @@ Patch0:   kea-systemd.patch
 
 # autoreconf
 BuildRequires: autoconf automake libtool
-BuildRequires: boost-devel
+BuildRequires: boost157-devel
 # %%configure --with-openssl
 BuildRequires: openssl-devel
 # %%configure --with-dhcp-mysql
@@ -105,7 +105,9 @@ export CXXFLAGS="%{optflags} -std=gnu++11 -Wno-deprecated-declarations"
     --with-log4cplus \
     --with-openssl \
     --with-pgsql \
-    --with-gnu-ld 
+    --with-gnu-ld \
+    --with-boost-include=/usr/include/boost157 \
+    --with-boost-lib-dir=/usr/lib64/boost157
 #    --with-gtest
 
 make %{?_smp_mflags}
