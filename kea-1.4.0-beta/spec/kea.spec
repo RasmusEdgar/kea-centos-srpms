@@ -13,7 +13,7 @@
 Summary:  DHCPv4, DHCPv6 and DDNS server from ISC
 Name:     kea
 Version:  1.4.0
-Release:  0.1.beta%{?dist}
+Release:  0.2.beta%{?dist}
 License:  MPLv2.0 and Boost
 URL:      http://kea.isc.org
 Source0:  http://ftp.isc.org/isc/kea/%{VERSION}/kea-%{VERSION}.tar.gz
@@ -248,6 +248,9 @@ EOF
 %{_libdir}/pkgconfig/dns++.pc
 
 %changelog
+* Tue May 22 2018 Rasmus Edgar <regj@arch-ed.dk> - 1.4.0-0.2.beta
+- Adjusted the kea.spec for kea 1.4.0-0.2.beta
+
 * Sat Oct 28 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-2
 - Add kea-ctrl-agent.service in kea-systemd.patch
 
