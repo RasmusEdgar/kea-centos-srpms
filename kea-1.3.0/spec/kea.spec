@@ -254,7 +254,7 @@ EOF
 %{_libdir}/pkgconfig/dns++.pc
 
 %changelog
-* Sat May 30 2018 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-3
+* Wed May 30 2018 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-3
 - Adjust paths for keactrl to fit with CentOS. Integrate keactrl into systemd for reloading kea.
 
 * Sat Oct 28 2017 Rasmus Edgar <regj@arch-ed.dk> - 1.3.0-2
