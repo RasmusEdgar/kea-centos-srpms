@@ -19,6 +19,8 @@ https://github.com/rpm-software-management/mock/wiki
 
 Install source rpm as normal user or as mock:
 
-```rpm -i kea-<version>.el7.src.rpm
+```
+rpm -i kea-<version>.el7.src.rpm
 cd rpmbuild/SPECS
-rpmbuild -ba kea.spec```
+rpmbuild -ba kea.spec
+```
