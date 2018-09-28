@@ -1,0 +1,9 @@
+/var/log/kea*.log {
+    daily
+    compress
+    delaycompress
+    rotate 10
+    postrotate
+        /sbin/keactrl reload &>/dev/null || true
+    endscript
+}
