@@ -14,7 +14,7 @@
 Summary:  DHCPv4, DHCPv6 and DDNS server from ISC
 Name:     kea
 Version:  1.4.0
-Release:  3.%{patchver}%{?dist}
+Release:  4.%{patchver}%{?dist}
 License:  MPLv2.0 and Boost
 URL:      http://kea.isc.org
 Source0:  http://ftp.isc.org/isc/kea/%{VERSION}/kea-%{VERSION}.tar.gz
@@ -22,6 +22,7 @@ Source0:  http://ftp.isc.org/isc/kea/%{VERSION}/kea-%{VERSION}.tar.gz
 # http://kea.isc.org/ticket/3529
 Patch0:   kea-systemd.patch
 Patch1:   keactrl-patches.patch
+Patch2:   kea-logrotate
 
 Prefix:   /usr
 
@@ -102,6 +103,8 @@ sed -i -e 's|ECHO|YYECHO|g' src/lib/eval/lexer.cc
 %build
 autoreconf --verbose --force --install
 export CXXFLAGS="%{optflags} -std=gnu++11 -Wno-deprecated-declarations"
+# Hardcode python to 3.6
+export PYTHON='/usr/bin/python3.6'
 
 %configure \
     --disable-dependency-tracking \
@@ -265,6 +268,9 @@ EOF
 %{_libdir}/pkgconfig/dns++.pc
 
 %changelog
+* Thu Oct 4 2018 Rasmus Edgar <regj@arch-ed.dk> - 1.4.0-4.P1
+- Ensure kea-logrotate is included in srpm. Set PYTHON var to python3.6
+
 * Wed Sep 19 2018 Rasmus Edgar <regj@arch-ed.dk> - 1.4.0-3.P1
 - Use P1 release. Python36 build requirement. Set boost157-devel as required for kea-devel.
 
