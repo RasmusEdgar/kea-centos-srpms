@@ -1,0 +1,25 @@
+From 08653bc6ca5011c953e4fed02bb7d76c444df913 Mon Sep 17 00:00:00 2001
+From: Rasmus Edgar <builder@builder.com>
+Date: Sat, 15 Dec 2018 13:29:47 +0100
+Subject: [PATCH 1/1] Fix keactrl logger dest
+
+---
+ src/bin/keactrl/keactrl.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bin/keactrl/keactrl.in b/src/bin/keactrl/keactrl.in
+index 9869bc3..cbaddc5 100644
+--- a/src/bin/keactrl/keactrl.in
++++ b/src/bin/keactrl/keactrl.in
+@@ -313,7 +313,7 @@ run_conditional() {
+ # to the default file.
+ if [ -z ${KEA_LOGGER_DESTINATION} ]; then
+     prefix=@prefix@
+-    export KEA_LOGGER_DESTINATION=@localstatedir@/@PACKAGE@/kea.log
++    export KEA_LOGGER_DESTINATION=@localstatedir@/log/keactrl.log
+ fi
+ 
+ command=${1}
+-- 
+1.8.3.1
+
